@@ -1,0 +1,39 @@
+<html>
+
+<link href="css/styles.css" rel="stylesheet">
+
+<script src="js/vendor/d3.v3.min.js"></script>
+<script src="js/vendor/vega.js"></script>
+<script src="js/vendor/jquery-2.1.4.min.js"></script>
+
+<div class="viz">
+  <h1>Outstanding Suggestions by Department</h1>
+  <div id="outstanding"></div>
+</div>
+  
+<div class="viz">
+  <h1>Most Responsive Departments</h1>
+  <div id="responsive"></div>
+</div>
+
+  <div class="viz">
+  <h1>All Suggestions by Department</h1>
+  <div id="allSuggestions"></div>
+</div>
+
+<div id="tooltip"></div>
+
+<script src="js/doOutstanding.js"></script>
+<script src="js/doResponsive.js"></script>
+<script src="js/doAllSuggestions.js"></script>
+
+<script type="text/javascript">
+  $(document).bind('mousemove', function (e) {
+    $('#tooltip').css({
+      "left": e.pageX + 20,
+      "top": e.pageY
+    });
+  });
+</script>
+
+</html>

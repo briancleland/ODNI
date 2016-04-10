@@ -1,0 +1,113 @@
+{
+  "width": 200,
+  "height": 200,
+  "padding": {"top": 10,"left": 90,"bottom": 30,"right": 40},
+  "data": [
+    {
+      "name": "table",
+      "url": "csv/suggestions.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"year": "number","estimate_low": "number"}
+      }
+    },    
+    {
+      "name": "stats",
+      "source": "table",
+      "transform": [
+        {
+          "type": "facet", "groupby": ["Dept", "Status"], "summarize": {"Title": "count"}
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "y",
+      "type": "ordinal",
+      "range": "height",
+      "domain": {"data": "table","field": "Dept"}
+    },
+    {
+      "name": "Depts",
+      "type": "ordinal",
+      "domain": [
+        "Department for Regional Development",
+        "Department of Health Social Services and Public Safety",
+        "Department of Education",
+        "Department for Social Development",
+        "Department for Employment and Learning",
+        "Department of the Environment",
+        "Department of Finance and Personnel",
+        "Department of Justice",
+        "Department of Agriculture and Rural Development",
+        "Department of Culture, Arts and Leisure,",
+        "Office of the First Minister and Deputy First Minister"
+      ],
+      "range": ["DARD","DHSSPS","DOE","DSD","DEL","DENI","DFP","DOJ","DARD","DCAL","OFMDFM"]
+    },
+    {
+      "name": "x",
+      "range": "width",
+      "type": "linear",
+      "domain": {"data": "stats","field": "count_Title"}
+    },
+    {
+      "name": "c",
+      "type": "ordinal",
+      "range": ["red","green"],
+      "domain": {"data": "table","field": "Status"}
+    }
+  ],
+  "axes": [
+    {"type": "x","scale": "x"},
+    {
+      "type": "y",
+      "scale": "y",
+      "properties": {
+        "ticks": {"stroke":{"opacity":0}},
+        "labels": {"opacity": {"value":0}}
+      }
+    } 
+  ],
+  "marks": [    
+    {
+      "name": "numRequests",
+      "type": "symbol",
+      "from": {
+        "data": "stats"
+      },
+      "properties": {
+        "enter": {
+          "x": {"scale": "x", "field": "count_Title"},
+          "y": {"scale": "y","field": "Dept"},
+          "height": {"scale": "y","band": true,"offset": -10},
+          "fill": {"scale": "c","field": "Status"}
+        }
+      }
+    },  
+    {
+      "name": "labels",
+      "type": "text",
+      "from": {
+        "data": "table",
+        "transform": [{
+          "type": "aggregate",
+          "groupby": ["Dept"],
+          "summarize": [{"field": "Dept","ops": ["count"]}]
+          }
+        ] 
+      },
+      "properties": {
+        "enter": {
+          "x": {"value": -10},
+          "y": {"scale": "y","field": "Dept","offset": 10},
+          "text": {"scale": "Depts","field": "Dept"},
+          "fontSize": {"value": 12},
+          "align": {"value": "right"},
+          "fill": {"value": "black"}
+        }
+      }
+    }
+  ]
+}
