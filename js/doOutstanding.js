@@ -10,9 +10,8 @@
             $('#tooltip').show();
             $('#tooltip').html(
               "<b>" + item.datum.Title + "</b><br>" +
-              "Status: " + item.datum.Status + "<br>" +
-              "Can_publish: " + item.datum.Can_publish + "<br>" +
-              "Response_outstanding_days: " + item.datum.Response_outstanding_days + "<br>");
+              item.datum.Dept + "<br>" +
+              item.datum.Response_outstanding_days + " days<br>");
           } else {
             $('#tooltip').hide();
           }

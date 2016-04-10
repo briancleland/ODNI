@@ -1,17 +1,23 @@
-  #tooltip {
-    display: none;
-    position: absolute;
-    float: left;
-    background-color: #fff;
-    padding: 7px;
-    border-radius: 3px;
-    z-index: 1000;
-    font-size: 80%;
-    color: #666;
-  }
+#tooltip {
+  display: none;
+  position: absolute;
+  float: left;
+  background-color: #fff;
+  padding: 7px;
+  border-radius: 3px;
+  z-index: 1000;
+  font-size: 80%;
+  color: #666;
+}
 
 body {
   background: #fff;
+}
+
+#dashboard {
+  overflow: auto;
+  width: 1200px;
+  margin: 20px auto;
 }
 
 .viz {
@@ -21,11 +27,12 @@ body {
   padding: 20px;
   margin-right: 10px;
   margin-bottom: 10px;
+  width: calc(50% - 52px);
 }
 
 .viz h1 {
   font-family: sans-serif;
-  margin: 0px 0px 30px;
+  margin: 0px 0px 10px;
   font-size: 16px;
   font-weight: normal;
 }

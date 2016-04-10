@@ -6,19 +6,32 @@
 <script src="js/vendor/vega.js"></script>
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
 
-<div class="viz">
-  <h1>Outstanding Suggestions by Department</h1>
-  <div id="outstanding"></div>
-</div>
-  
-<div class="viz">
-  <h1>Most Responsive Departments</h1>
-  <div id="responsive"></div>
-</div>
+
+<div id="dashboard">
+  <div class="viz">
+    <h1>Outstanding Suggestions by Department/Response Time</h1>
+    <div id="outstanding"></div>
+  </div>
 
   <div class="viz">
-  <h1>All Suggestions by Department</h1>
-  <div id="allSuggestions"></div>
+    <h1>Most and Least Responsive Departments</h1>
+    <div id="responsive"></div>
+  </div>
+
+  <div class="viz">
+    <h1>All Suggestions by Department/Status</h1>
+    <div id="allSuggestions"></div>
+  </div>
+
+  <div class="viz">
+    <h1>Total Suggestions over Time</h1>
+    <div id="timeSuggestions"></div>
+  </div>
+  
+  <div class="viz">
+    <h1>All Suggestions by "Status Reason"</h1>
+    <div id="statusPi"></div>
+  </div>
 </div>
 
 <div id="tooltip"></div>
@@ -26,6 +39,8 @@
 <script src="js/doOutstanding.js"></script>
 <script src="js/doResponsive.js"></script>
 <script src="js/doAllSuggestions.js"></script>
+<script src="js/doTimeSuggestions.js"></script>
+<script src="js/doStatusPi.js"></script>
 
 <script type="text/javascript">
   $(document).bind('mousemove', function (e) {

@@ -1,7 +1,7 @@
 {
-  "width": 200,
+  "width": 400,
   "height": 200,
-  "padding": {"top": 10,"left": 90,"bottom": 30,"right": 40},
+  "padding": {"top": 10,"left": 70,"bottom": 20,"right": 20},
   "data": [
     {
       "name": "table",
@@ -12,11 +12,20 @@
       }
     },    
     {
-      "name": "stats",
+      "name": "counts",
       "source": "table",
       "transform": [
         {
           "type": "facet", "groupby": ["Dept", "Status"], "summarize": {"Title": "count"}
+        }
+      ]
+    },    
+    {
+      "name": "stats",
+      "source": "counts",
+      "transform": [
+        {
+          "type": "aggregate", "groupby": ["Dept"], "summarize": {"count_Title": "sum"}
         }
       ]
     }
@@ -50,17 +59,17 @@
       "name": "x",
       "range": "width",
       "type": "linear",
-      "domain": {"data": "stats","field": "count_Title"}
+      "domain": {"data": "stats","field": "sum_count_Title"}
     },
     {
       "name": "c",
       "type": "ordinal",
-      "range": ["red","green"],
+      "range": ["#888","#ff7f0e"],
       "domain": {"data": "table","field": "Status"}
     }
   ],
   "axes": [
-    {"type": "x","scale": "x"},
+    {"type": "x","scale": "x","ticks": 6},
     {
       "type": "y",
       "scale": "y",
@@ -71,21 +80,6 @@
     } 
   ],
   "marks": [    
-    {
-      "name": "numRequests",
-      "type": "symbol",
-      "from": {
-        "data": "stats"
-      },
-      "properties": {
-        "enter": {
-          "x": {"scale": "x", "field": "count_Title"},
-          "y": {"scale": "y","field": "Dept"},
-          "height": {"scale": "y","band": true,"offset": -10},
-          "fill": {"scale": "c","field": "Status"}
-        }
-      }
-    },  
     {
       "name": "labels",
       "type": "text",
@@ -106,6 +100,24 @@
           "fontSize": {"value": 12},
           "align": {"value": "right"},
           "fill": {"value": "black"}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "counts",
+        "transform": [
+          {"type": "stack", "groupby": ["Dept"], "sortby": ["Status"], "field": "count_Title"}
+        ]
+      },
+      "properties": {
+        "enter": {
+          "y": {"scale": "y", "field": "Dept"},
+          "height": {"scale": "y","band": true,"offset": -10},
+          "x": {"scale": "x", "field": "layout_start"},
+          "x2": {"scale": "x", "field": "layout_end"},
+          "fill": {"scale": "c", "field": "Status"}
         }
       }
     }

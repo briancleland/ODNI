@@ -1,7 +1,7 @@
 {
-  "width": 200,
+  "width": 400,
   "height": 200,
-  "padding": {"top": 10,"left": 90,"bottom": 30,"right": 50},
+  "padding": {"top": 10,"left": 80,"bottom": 20,"right": 20},
   "data": [
     {
       "name": "table",
@@ -10,6 +10,14 @@
         "type": "csv",
         "parse": {"year": "number","estimate_low": "number"}
       }
+    },    
+    {
+      "name": "stats",
+      "source": "table",
+      "transform": [
+        {"type": "filter", "test": "datum.Response_outstanding_days > 0"},
+        {"type": "aggregate", "groupby": "Dept", "summarize": {"Response_outstanding_days": "mean"}}
+      ]
     }
   ],
   "scales": [
@@ -17,7 +25,7 @@
       "name": "y",
       "type": "ordinal",
       "range": "height",
-      "domain": {"data": "table","field": "Dept"}
+      "domain": {"data": "stats","field": "Dept", "sort": {"field": "mean_Response_outstanding_days", "op": "mean"}}
     },
     {
       "name": "Depts",
@@ -41,21 +49,14 @@
       "name": "x",
       "range": "width",
       "type": "linear",
-      "domain": {"data": "table","field": "Response_outstanding_days"}
+      "domain": {"data": "stats","field": "mean_Response_outstanding_days"}
     },
     {
-      "name": "c",
+      "name": "labelColours",
       "type": "ordinal",
-      "range": ["red","green","#bbb"],
-      "domain": {"data": "table","field": "Can_publish"}
-    },
-    {
-      "name": "labelColor",
-      "type": "ordinal",
-      "range": "category20",
+      "range": "category10",
       "domain": {"data": "table","field": "Dept"}
     }
-    
   ],
   "axes": [
     {"type": "x","scale": "x"},
@@ -68,59 +69,34 @@
       }
     } 
   ],
-  "marks": [
+  "marks": [    
     {
-      "name": "requests",
-      "type": "symbol",
+      "name": "numRequests",
+      "type": "rect",
       "from": {
-        "data": "table", 
-        "transform": [{"type": "filter", "test": "datum.Response_outstanding_days > 0"}]
+        "data": "stats"
       },
       "properties": {
         "enter": {
-          "x": {
-            "scale": "x",
-            "field": "Response_outstanding_days"
-          },
-          "y": {"scale": "y","field": "Dept","offset": 12},
-          "size": {"value": 100},
-          "fill": {"scale": "labelColor","field": "Dept"},
-          "fillOpacity": {"value": 1},
-          "stroke": {"value": "#000"},
-          "strokeOpacity": {"value": 0.5}
+          "x": {"scale": "x", "value": 0},
+          "x2": {"scale": "x", "field": "mean_Response_outstanding_days"},
+          "y": {"scale": "y","field": "Dept","offset": 5},
+          "height": {"scale": "y","band": true,"offset": -10},
+          "fill": {"scale": "labelColours","field": "Dept"},
+          "fillOpacity": {"value": 0.8}
         }
       }
-    },    
-    {
-      "name": "keys",
-      "type": "symbol",
-      "from": {"data": "table"},
-      "properties": {
-        "enter": {
-          "x": {"value": -15},
-          "y": {"scale": "y","field": "Dept","offset": 12},
-          "size": {"value": 50},
-          "fillOpacity": {"value": 1},
-          "fill": {"scale": "labelColor","field": "Dept"}
-        }
-      }
-    },    
+    },  
     {
       "name": "labels",
       "type": "text",
       "from": {
-        "data": "table",
-        "transform": [{
-          "type": "aggregate",
-          "groupby": ["Dept"],
-          "summarize": [{"field": "Dept","ops": ["count"]}]
-          }
-        ] 
+        "data": "stats"
       },
       "properties": {
         "enter": {
-          "x": {"value": -30},
-          "y": {"scale": "y","field": "Dept","offset": 17},
+          "x": {"value": -10},
+          "y": {"scale": "y","field": "Dept","offset": 25},
           "text": {"scale": "Depts","field": "Dept"},
           "fontSize": {"value": 12},
           "align": {"value": "right"},

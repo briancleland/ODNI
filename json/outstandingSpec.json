@@ -1,7 +1,7 @@
 {
-  "width": 200,
+  "width": 400,
   "height": 200,
-  "padding": {"top": 10,"left": 90,"bottom": 30,"right": 50},
+  "padding": {"top": 10,"left": 90,"bottom": 20,"right": 50},
   "data": [
     {
       "name": "table",
@@ -35,7 +35,7 @@
         "Department of Culture, Arts and Leisure,",
         "Office of the First Minister and Deputy First Minister"
       ],
-      "range": ["DARD","DHSSPS","DOE","DSD","DEL","DENI","DFP","DOJ","DARD","DCAL","OFMDFM"]
+      "range": ["DARD","DHSSPS","DENI","DSD","DEL","DOE","DFP","DOJ","DARD","DCAL","OFMDFM"]
     },
     {
       "name": "x",
@@ -83,7 +83,7 @@
             "field": "Response_outstanding_days"
           },
           "y": {"scale": "y","field": "Dept","offset": 12},
-          "size": {"value": 100},
+          "size": {"value": 200},
           "fill": {"scale": "labelColor","field": "Dept"},
           "fillOpacity": {"value": 1},
           "stroke": {"value": "#000"},
