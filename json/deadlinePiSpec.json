@@ -15,7 +15,7 @@
       "name": "counts",
       "source": "table",
       "transform": [
-        {"type": "facet", "groupby": ["Status_reason"], "summarize": {"Title": "count"}},
+        {"type": "facet", "groupby": ["Deadline_met"], "summarize": {"Title": "count"}},
         {"type": "pie", "field": "count_Title"}
       ]
     }
@@ -24,8 +24,8 @@
     {
       "name": "c",
       "type": "ordinal",
-      "domain": {"data": "counts", "field": "Status_reason"},
-      "range": "category10"
+      "domain": {"data": "counts", "field": "Deadline_met"},
+      "range": ["#d62728", "#2ca02c"]
     }
   ],
   "marks": [    
@@ -43,7 +43,7 @@
           "stroke": {"value": "#fff"}
         },
         "update": {
-          "fill": {"scale": "c", "field": "Status_reason"},
+          "fill": {"scale": "c", "field": "Deadline_met"},
           "fillOpacity": {"value": 0.8}
         }
       }

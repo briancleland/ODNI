@@ -9,12 +9,12 @@
 
 <div id="dashboard">
   <div class="viz">
-    <h1>Outstanding Suggestions by Department/Response Time</h1>
+    <h1>Outstanding Suggestions by Dept/Time</h1>
     <div id="outstanding"></div>
   </div>
 
   <div class="viz">
-    <h1>Most and Least Responsive Departments</h1>
+    <h1>Average Reponse Times by Department</h1>
     <div id="responsive"></div>
   </div>
 
@@ -32,6 +32,10 @@
     <h1>All Suggestions by "Status Reason"</h1>
     <div id="statusPi"></div>
   </div>
+  <div class="viz">
+    <h1>Target Response Times Met</h1>
+    <div id="deadlinePi"></div>
+  </div>
 </div>
 
 <div id="tooltip"></div>
@@ -41,6 +45,7 @@
 <script src="js/doAllSuggestions.js"></script>
 <script src="js/doTimeSuggestions.js"></script>
 <script src="js/doStatusPi.js"></script>
+<script src="js/doDeadlinePi.js"></script>
 
 <script type="text/javascript">
   $(document).bind('mousemove', function (e) {

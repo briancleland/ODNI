@@ -1,7 +1,7 @@
 {
-  "width": 400,
+  "width": 210,
   "height": 200,
-  "padding": {"top": 10,"left": 90,"bottom": 20,"right": 50},
+  "padding": {"top": 10,"left": 85,"bottom": 20,"right": 50},
   "data": [
     {
       "name": "table",
@@ -87,7 +87,7 @@
           "fill": {"scale": "labelColor","field": "Dept"},
           "fillOpacity": {"value": 1},
           "stroke": {"value": "#000"},
-          "strokeOpacity": {"value": 0.5}
+          "strokeOpacity": {"value": 0.8}
         }
       }
     },    

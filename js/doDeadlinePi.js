@@ -1,6 +1,6 @@
-vg.parse.spec("json/statusPiSpec.json", function (chart) {
+vg.parse.spec("json/deadlinePiSpec.json", function (chart) {
   chart({
-      el: "#statusPi",
+      el: "#deadlinePi",
       renderer: "svg"
     })
     .on("mouseover", function (event, item) {
@@ -9,7 +9,7 @@ vg.parse.spec("json/statusPiSpec.json", function (chart) {
         var date = new Date(item.datum.Date_submitted);
         $('#tooltip').show();
         $('#tooltip').html(
-          item.datum.Status_reason
+          item.datum.Deadline_met
         );
       } else {
         $('#tooltip').hide();

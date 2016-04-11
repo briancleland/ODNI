@@ -10,7 +10,6 @@
             $('#tooltip').show();
             $('#tooltip').html(
               "<b>" + item.datum.Title + "</b><br>" +
-              item.datum.Dept + "<br>" +
               item.datum.Response_outstanding_days + " days<br>");
           } else {
             $('#tooltip').hide();

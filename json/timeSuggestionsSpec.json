@@ -1,7 +1,7 @@
 {
-  "width": 400,
+  "width": 310,
   "height": 200,
-  "padding": {"top": 10,"left": 70,"bottom": 20,"right": 20},
+  "padding": {"top": 10,"left": 20,"bottom": 20,"right": 20},
   "data": [
     {
       "name": "table",
@@ -33,8 +33,7 @@
     }
   ],
   "axes": [
-    {"type": "x", "scale": "x", "ticks": 6},
-    {"type": "y", "scale": "y", "ticks": 5}  
+    {"type": "x", "scale": "x", "ticks": 6}
   ],
   "marks": [    
     {
@@ -48,7 +47,7 @@
           "x": {"scale": "x", "field": "Date_submitted"},
           "y": {"scale": "y2", "value": 0},
           "y2": {"scale": "y", "field": "Count"},
-          "fill": {"value": "#ff7f0e"},
+          "fill": {"value": "#1f77b4"},
           "fillOpacity": {"value": 0.8}
         }
       }

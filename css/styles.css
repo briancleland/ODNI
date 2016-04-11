@@ -2,16 +2,19 @@
   display: none;
   position: absolute;
   float: left;
-  background-color: #fff;
+  background-color: #444;
   padding: 7px;
-  border-radius: 3px;
+/*  border-radius: 3px;*/
   z-index: 1000;
   font-size: 80%;
-  color: #666;
+  color: #fff;
+/*  border: 1px solid #bbb;*/
+  font-family: sans-serif;
+  max-width: 200px;
 }
 
 body {
-  background: #fff;
+  background: #666;
 }
 
 #dashboard {
@@ -21,13 +24,13 @@ body {
 }
 
 .viz {
-  background: #eee;
+  background: #fff;
   border: 1px solid #ddd;
   float: left;
   padding: 20px;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: calc(50% - 52px);
+  width: calc(33% - 52px);
 }
 
 .viz h1 {
