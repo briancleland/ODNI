@@ -19,7 +19,7 @@
       "range": "height",
       "domain": {"data": "table","field": "Dept"}
     },
-    {
+   {
       "name": "Depts",
       "type": "ordinal",
       "domain": [
@@ -32,10 +32,10 @@
         "Department of Finance and Personnel",
         "Department of Justice",
         "Department of Agriculture and Rural Development",
-        "Department of Culture, Arts and Leisure,",
+        "Department of Culture Arts and Leisure",
         "Office of the First Minister and Deputy First Minister"
       ],
-      "range": ["DARD","DHSSPS","DENI","DSD","DEL","DOE","DFP","DOJ","DARD","DCAL","OFMDFM"]
+      "range": ["DRD","DHSSPS","DENI","DSD","DEL","DOE","DFP","DOJ","DARD","DCAL","OFMDFM"]
     },
     {
       "name": "x",
@@ -83,11 +83,16 @@
             "field": "Response_outstanding_days"
           },
           "y": {"scale": "y","field": "Dept","offset": 12},
-          "size": {"value": 200},
+          "size": {"value": 100},
           "fill": {"scale": "labelColor","field": "Dept"},
-          "fillOpacity": {"value": 1},
           "stroke": {"value": "#000"},
           "strokeOpacity": {"value": 0.8}
+        },
+        "update":{
+          "strokeWidth": {"value": 1}
+        },
+        "hover":{
+          "strokeWidth": {"value": 2}
         }
       }
     },    

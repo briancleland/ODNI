@@ -28,6 +28,9 @@
       "range": ["#d62728", "#2ca02c"]
     }
   ],
+  "legends": [
+    {"fill": "c"}
+  ],
   "marks": [    
     {
       "type": "arc",

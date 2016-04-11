@@ -1,7 +1,7 @@
 {
-  "width": 260,
+  "width": 190,
   "height": 200,
-  "padding": {"top": 10,"left": 70,"bottom": 20,"right": 20},
+  "padding": {"top": 10,"left": 70,"bottom": 20,"right": 100},
   "data": [
     {
       "name": "table",
@@ -35,9 +35,9 @@
       "name": "y",
       "type": "ordinal",
       "range": "height",
-      "domain": {"data": "table","field": "Dept"}
+      "domain": {"data": "stats","field": "Dept","sort": {"field": "sum_count_Title", "op": "mean"}}
     },
-    {
+     {
       "name": "Depts",
       "type": "ordinal",
       "domain": [
@@ -50,10 +50,10 @@
         "Department of Finance and Personnel",
         "Department of Justice",
         "Department of Agriculture and Rural Development",
-        "Department of Culture, Arts and Leisure,",
+        "Department of Culture Arts and Leisure",
         "Office of the First Minister and Deputy First Minister"
       ],
-      "range": ["DARD","DHSSPS","DOE","DSD","DEL","DENI","DFP","DOJ","DARD","DCAL","OFMDFM"]
+      "range": ["DRD","DHSSPS","DENI","DSD","DEL","DOE","DFP","DOJ","DARD","DCAL","OFMDFM"]
     },
     {
       "name": "x",
@@ -75,9 +75,13 @@
       "scale": "y",
       "properties": {
         "ticks": {"stroke":{"opacity":0}},
-        "labels": {"opacity": {"value":0}}
+        "labels": {"opacity": {"value":0}},
+        "axis": {"opacity": {"value":0}}
       }
     } 
+  ],
+  "legends": [
+    {"fill": "c"}
   ],
   "marks": [    
     {

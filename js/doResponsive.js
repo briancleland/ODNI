@@ -5,12 +5,11 @@ vg.parse.spec("json/responsiveSpec.json", function (chart) {
           renderer: "svg"
         })
         .on("mouseover", function (event, item) {
-        var temp = item;
           console.log(item);
-          if (item) {
+          if (item && item.mark.name == "numRequests") {
             $('#tooltip').show();
             $('#tooltip').html(
-              "Avg Response: " + item.datum.mean_Response_outstanding_days + " days"
+              Math.round(item.datum.mean_Response_time*10)/10 + " days"
             );
           } else {
             $('#tooltip').hide();
